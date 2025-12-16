@@ -1,0 +1,23 @@
+.button {
+    display: block;
+    aspect-ratio: 1 / 1;
+    width: 40px;
+    border-radius: 50%;
+    border: none;
+    padding: 0;
+    background-color: #007bff;
+    transition: background-color 0.3s ease;
+
+    &.active {
+        background-color: #28a745;
+    }
+
+    &:not(.active){
+
+        cursor: pointer;
+
+        &:hover {
+            background-color: #0056b3;
+        }   
+    }
+}
