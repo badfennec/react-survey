@@ -23,11 +23,12 @@ export default function Intro(){
     return(<>
         <Step>
             <Step.Title>
-                Welcome to the Quiz!
+                Welcome to the Survey!
             </Step.Title>
 
             <Step.Description>
-                This quiz will test your knowledge on various topics. Get ready to challenge yourself and have fun!
+                This quiz will test your knowledge on various topics. <br></br>
+                Get ready to challenge yourself and have fun!
             </Step.Description>
             
             <Step.Footer>

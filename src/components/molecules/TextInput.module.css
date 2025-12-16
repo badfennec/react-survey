@@ -1,0 +1,42 @@
+@reference "tailwindcss";
+
+.focus:not(.is-error) {
+    label {
+        .text {
+            @apply text-purple-500;
+        }
+
+        input {
+            @apply border-slate-500;
+        }
+    }
+}
+
+.is-error {
+    label {
+        .text {
+            @apply text-red-800;
+        }
+
+        input {
+            @apply border-red-800;
+        }
+    }
+}
+
+label {
+
+    .text, input {
+        @apply transition-colors duration-200 ease-in-out;
+    }
+
+    .text {
+        @apply block text-xs mb-1 font-semibold text-slate-700 cursor-pointer;
+    }
+
+    input {
+        @apply block border w-full border-slate-200 px-3 py-2 rounded-sm;
+        @apply focus-visible:outline-none;
+    }
+
+}

@@ -49,19 +49,22 @@ export const surveySlice = createSlice({
     name: 'survey',
     initialState,
     reducers: {
-        initQuestions: (state: SurveyState, action: PayloadAction<Array<Question>>) => {
+        initQuestions: (state: SurveyState, action: PayloadAction<Array<Question>>) : void => {
             state.questions = [...action.payload];
         },
-        goToNextStep: (state: SurveyState) => {
+        goToNextStep: (state: SurveyState) : void => {
             const currentStepIndex = state.stepOrder.indexOf(state.step);
             if (currentStepIndex < state.stepOrder.length - 1) {
                 state.step = state.stepOrder[currentStepIndex + 1];
             }
+        },
+        saveUserData: (state: SurveyState, action: PayloadAction<SurveyUser>) : void => {
+            state.user = { ...action.payload };
         }
     }
 });
 
-export const { initQuestions, goToNextStep } = surveySlice.actions;
+export const { initQuestions, goToNextStep, saveUserData } = surveySlice.actions;
 export const selectSurvey = (state: RootState) => state.survey;
 
 export default surveySlice.reducer;

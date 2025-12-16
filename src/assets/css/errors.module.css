@@ -1,0 +1,5 @@
+@reference "tailwindcss";
+
+.list {
+    @apply text-red-800 text-xs mt-2 pl-2;
+}
