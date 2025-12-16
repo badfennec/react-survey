@@ -1,0 +1,17 @@
+@reference 'tailwindcss';
+
+.step {
+    
+}
+
+.title {
+    @apply text-center text-2xl font-semibold mb-6 text-gray-800;
+}
+
+.description {
+    @apply text-sm leading-6 text-center text-gray-500 max-w-[350px] mx-auto;
+}
+
+.footer {
+    @apply mt-8;
+}

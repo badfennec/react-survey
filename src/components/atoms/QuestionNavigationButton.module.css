@@ -1,23 +1,14 @@
+@reference 'tailwindcss';
+
 .button {
-    display: block;
-    aspect-ratio: 1 / 1;
-    width: 40px;
-    border-radius: 50%;
-    border: none;
-    padding: 0;
-    background-color: #007bff;
-    transition: background-color 0.3s ease;
+
+    @apply block aspect-square w-[40px] rounded-full border-0 p-0 bg-blue-300 transition-colors duration-300 ease-in-out;
 
     &.active {
-        background-color: #28a745;
+        @apply bg-blue-800
     }
 
     &:not(.active){
-
-        cursor: pointer;
-
-        &:hover {
-            background-color: #0056b3;
-        }   
+        @apply cursor-pointer hover:bg-blue-600;
     }
 }

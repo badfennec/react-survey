@@ -1,6 +1,7 @@
 import { useSelector } from 'react-redux'
 
 import Loading from "../organisms/Loading";
+import QuestionNavigationButton from '../atoms/QuestionNavigationButton';
 
 export default function Survey(){    
 
@@ -11,7 +12,9 @@ export default function Survey(){
         <>
             { isLoading ? <><Loading /></> : <>
             
-                <div>My Quiz here</div>
+                <div>
+                    <QuestionNavigationButton index={0} currentIndex={10} />
+                </div>
 
             </> }
         </>

@@ -256,7 +256,7 @@ export default function getQuestions(signal: AbortSignal) : Promise<object[]> {
 
         const timeoutId = setTimeout(() => {
             resolve(MOCK_QUESTIONS);
-        }, 5000); 
+        }, 100); 
 
         if (signal) {
             signal.addEventListener('abort', () => {

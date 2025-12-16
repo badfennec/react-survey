@@ -4,7 +4,7 @@ import type { RootState } from '../../index'
 
 import type {Question} from '../../../services/questions.service'
 
-export type SurveyStep = 'INTRO' | 'SURVEY' | 'FINISH';
+export type SurveyStep = 'INTRO' | 'USERDATA' | 'SURVEY' | 'FINISH';
 
 interface SurveyUser {
     name: string;
@@ -42,7 +42,7 @@ const initialState: SurveyState = {
     currentQuestionId: null,
     completed: false,
     step: 'INTRO',
-    stepOrder: ['INTRO', 'SURVEY', 'FINISH']
+    stepOrder: ['INTRO', 'USERDATA', 'SURVEY', 'FINISH']
 }
 
 export const surveySlice = createSlice({
@@ -51,11 +51,17 @@ export const surveySlice = createSlice({
     reducers: {
         initQuestions: (state: SurveyState, action: PayloadAction<Array<Question>>) => {
             state.questions = [...action.payload];
+        },
+        goToNextStep: (state: SurveyState) => {
+            const currentStepIndex = state.stepOrder.indexOf(state.step);
+            if (currentStepIndex < state.stepOrder.length - 1) {
+                state.step = state.stepOrder[currentStepIndex + 1];
+            }
         }
     }
 });
 
-export const { initQuestions } = surveySlice.actions;
+export const { initQuestions, goToNextStep } = surveySlice.actions;
 export const selectSurvey = (state: RootState) => state.survey;
 
 export default surveySlice.reducer;
