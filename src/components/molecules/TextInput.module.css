@@ -35,7 +35,7 @@
     }
 
     input {
-        @apply block border w-full border-slate-200 px-3 py-2 rounded-sm;
+        @apply block border-2 w-full border-slate-200 px-3 py-2 rounded-sm font-normal;
         @apply focus-visible:outline-none;
     }
 

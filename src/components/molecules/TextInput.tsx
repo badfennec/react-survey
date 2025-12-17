@@ -16,7 +16,7 @@ export default function TextInput( props : Props ) {
 
     const [isOnFocus, setIsOnFocus ] = useState(false);
     const [hasBlurred, setHasBlurred ] = useState(false);
-    const [showErrorsOnBlur, setShowErrorsOnBlur ] = useState( props.showErrorsOnBlur ?? true );
+    const showErrorsOnBlur = props.showErrorsOnBlur ?? true;
     
     const onInput = ( event: React.FormEvent<HTMLInputElement> ) => {
         if( props.onInput ){
@@ -24,11 +24,11 @@ export default function TextInput( props : Props ) {
         }
     };
 
-    const onFocus = ( event: React.FocusEvent<HTMLInputElement> ) => {
+    const onFocus = () => {
         setIsOnFocus(true);
     }
 
-    const onBlur = ( event: React.FocusEvent<HTMLInputElement> ) => {
+    const onBlur = () => {
         setHasBlurred(true);
         setIsOnFocus(false);
     }
