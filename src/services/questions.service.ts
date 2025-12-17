@@ -1,14 +1,16 @@
-type QuestionType = 'SINGLE_CHOICE' | 'MULTIPLE_CHOICE';
+export type QuestionType = 'SINGLE_CHOICE' | 'MULTIPLE_CHOICE';
+
+export interface QuestionOption {
+    value: string | number;
+    label: string;
+    next_q_id?: string;
+}
 
 export interface Question {
     id: string;
     text: string;
     type: QuestionType;
-    options: Array<{
-        value: string | number;
-        label: string;
-        next_q_id?: string;
-    }>;
+    options: QuestionOption[];
     next_q_id?: string;
 }
 

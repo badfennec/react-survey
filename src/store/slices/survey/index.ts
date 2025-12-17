@@ -13,7 +13,7 @@ interface SurveyUser {
 
 interface SurveyAnswer {
     questionId: string;
-    answer: string | number | Array<string | number>;
+    answer: null |string | number | Array<string | number>;
 }
 
 interface SurveyState {
@@ -51,6 +51,11 @@ export const surveySlice = createSlice({
     reducers: {
         initQuestions: (state: SurveyState, action: PayloadAction<Array<Question>>) : void => {
             state.questions = [...action.payload];
+
+            state.answers = action.payload.map((question) => ({
+                questionId: question.id,
+                answer: null
+            }));
         },
         goToNextStep: (state: SurveyState) : void => {
             const currentStepIndex = state.stepOrder.indexOf(state.step);

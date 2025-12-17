@@ -44,7 +44,7 @@ export default function TextInput( props : Props ) {
     return (<>
         <div className={`${ isOnFocus ? styles.focus : '' } ${ showErrors() ? styles['is-error'] : '' }`}>
 
-            <label>
+            <label className={styles.label}>
 
                 { props.label &&
                     <span className={styles.text}>{ props.label }</span>

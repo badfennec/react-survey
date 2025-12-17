@@ -1,0 +1,5 @@
+@reference 'tailwindcss';
+
+.title {
+    @apply text-slate-700 font-semibold mb-4;
+}

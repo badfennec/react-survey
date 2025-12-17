@@ -24,7 +24,7 @@
     }
 }
 
-label {
+.label {
 
     .text, input {
         @apply transition-colors duration-200 ease-in-out;

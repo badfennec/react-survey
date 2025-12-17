@@ -1,0 +1,47 @@
+@reference 'tailwindcss';
+
+.label {
+
+    @apply block px-3 py-2 rounded-sm border-2 w-full border-slate-200 transition-all duration-100 text-sm font-medium cursor-pointer;
+
+    input {
+        @apply appearance-none mr-3 p-0 inline-block relative align-middle w-5 aspect-square border-2 border-purple-300;
+
+        &:before {
+            @apply block absolute top-[50%] left-[50%] translate-x-[-50%] content-[''] transition-opacity opacity-0 duration-100;
+        }
+
+        &:after {
+            display: none !important;
+        }
+
+        &:checked {
+            &:before {
+                @apply opacity-100;
+            }
+        }
+    }
+
+    input[type="radio"] {
+        @apply rounded-[50%];
+
+        &:before {
+            @apply block w-1.5 aspect-square bg-purple-500 rounded-[50%] translate-y-[-50%] left-[50%];
+        }
+    }
+
+    input[type="checkbox"] {
+
+        &:before {
+            @apply block w-[0.3rem] h-[0.5rem] rotate-40 border-2 -translate-y-[.3rem]  border-l-0 border-t-0;
+        }
+    }
+}
+
+.checked {
+    @apply bg-purple-100 border-purple-500 text-purple-700;
+
+    input {
+        @apply border-purple-500;
+    }
+}

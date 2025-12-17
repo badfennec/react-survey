@@ -2,11 +2,14 @@ import { useAppSelector, useAppDispatch } from "../../hooks/store.hook.ts";
 
 import Step from '../organisms/Step';
 import Loading from "../organisms/Loading";
+import SurveyQuestion from "../organisms/SurveyQuestion";
 import QuestionNavigationButton from '../atoms/QuestionNavigationButton';
 
 export default function Survey(){    
 
     const questions = useAppSelector((state) => state.survey.questions);
+    const answers = useAppSelector((state) => state.survey.answers);
+
     const user = useAppSelector((state) => state.survey.user);
     const isLoading = questions.length === 0;
 
@@ -20,7 +23,16 @@ export default function Survey(){
                     </Step.Title>
 
                     <div>
-                        <QuestionNavigationButton index={0} currentIndex={10} />
+                        {
+                            answers.map((answer, index) => {
+                                const question = questions.find(q => q.id === answer.questionId);
+                                if (!question) return null;
+
+                                return (
+                                    <SurveyQuestion key={question.id} question={question} />
+                                );
+                            })
+                        }
                     </div>
                 </Step>
 
