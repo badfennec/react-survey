@@ -1,7 +1,7 @@
 @reference 'tailwindcss';
 
 .title {
-    @apply text-center text-2xl font-semibold mb-4 text-gray-800;
+    @apply text-center text-2xl font-semibold mb-4;
 }
 
 .description {

@@ -23,7 +23,7 @@ export default function FinishReportListItem({ answer }: { answer: SurveyAnswer 
     return (<>
         <div className={'font-semibold mb-1'}>{ question.text }</div>
         
-        <ul className={'grid grid-cols-1 gap-1 list-disc pl-4'}>
+        <ul className={'grid grid-cols-1 gap-1 list-disc pl-4 text-slate-500'}>
             {
                 answerValues.map( ( value, index ) => (
                     <li key={index} className={'ml-4'}>{ value }</li>

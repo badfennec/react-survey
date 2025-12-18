@@ -1,5 +1,6 @@
 import { useAppSelector } from "../../hooks/store.hook.ts";
 import Step from '../organisms/Step';
+import FinishBox from "../organisms/FinishBox.tsx";
 import FinishReportListItem from "../organisms/FinishReportListItem";
 
 export default function Finish(){
@@ -18,14 +19,26 @@ export default function Finish(){
                 Thank you for completing the survey.
             </Step.Description>
 
-            <div className={'mt-4'}>
-                <ul className={'grid grid-cols-1 gap-4 text-sm'}>
-                    { answers.map( ( answer, index ) => (
-                        <li key={index}>
-                            <FinishReportListItem answer={ answer } />
-                        </li>
-                    ) ) }
-                </ul>
+            <div className={'grid grid-cols-1 gap-4 mt-4'}>
+
+                <FinishBox>
+                    <ul className="">
+                        <li>name: <strong>{user.name}</strong></li>
+                        <li>email: <strong>{user.email}</strong></li>
+                    </ul>
+                </FinishBox>
+
+                <FinishBox>
+
+                    <ul className={'grid grid-cols-1 gap-4 text-sm'}>
+                        { answers.map( ( answer, index ) => (
+                            <li key={index}>
+                                <FinishReportListItem answer={ answer } />
+                            </li>
+                        ) ) }
+                    </ul>
+
+                </FinishBox>
             </div>
 
         </Step>

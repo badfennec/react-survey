@@ -40,7 +40,7 @@ function App() {
 	}, []);
 
   return (
-    <div className={'container mt-10 mx-auto'}>
+    <div className={'container my-10 mx-auto text-slate-700'}>
 		<div className = {styles.app}>
 			{ currentStep === 'INTRO' && <>
 				<Intro />

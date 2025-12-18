@@ -16,13 +16,16 @@ export interface Question {
 
 export default async function getQuestions(signal: AbortSignal) {
 
+    const pathToQuestions = '/questions.json';
+
     if (signal?.aborted) {
         throw new Error("Fetch aborted before starting");
     }
 
-    //simulate fetching questions from a local JSON file
+    //now we use a local JSON file to simulate fetching from an API
+    //you can also import the JSON file directly if preferred
     try {
-        const response = await fetch('/questions.json', { signal });
+        const response = await fetch(pathToQuestions, { signal });
         if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);
         }
