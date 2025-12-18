@@ -1,5 +1,11 @@
+import Loader from "../atoms/Loader";
+
 export default function Loading() {
     return(<>
-        <div>Loading...</div>
+        
+        <div className="text-center my-10">
+            <Loader />
+        </div>
+
     </>);
 }

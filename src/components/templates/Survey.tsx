@@ -1,7 +1,7 @@
 import { useAppSelector } from "../../hooks/store.hook.ts";
 
 import Step from '../organisms/Step';
-import Loading from "../organisms/Loading";
+import Loading from "../organisms/Loading.tsx";
 
 import SurveyQuestion from "../organisms/SurveyQuestion";
 import SurveyNavigation from "../organisms/SurveyNavigation";
@@ -17,33 +17,43 @@ export default function Survey(){
 
     return (
         <>
-            { isLoading ? <><Loading /></> : <>
 
-                <Step>
+            <Step>
 
-                    <Step.Title>
-                        Hello <span className={'text-purple-500'}>{ user.name }</span>!
-                    </Step.Title>
+                <Step.Title>
+                    Hello <span className={'text-purple-500'}>{ user.name }</span>!
+                </Step.Title>
 
-                    <div>
-                        {
-                            answers.map((answer, index) => {
-                                const question = questions.find(q => q.id === answer.questionId);
-                                if (!question || index !== answersPointer) return null;
+                
+                { isLoading && (<Step.Description>
+                    Loading questions, please wait...
+                </Step.Description>)}
 
-                                return (
-                                    <SurveyQuestion key={question.id} question={question} />
-                                );
-                            })
-                        }
-                    </div>
+                { isLoading && (<>
+                    <Loading />
+                </>)}
 
+                { !isLoading && (<div>
+                    {
+                        answers.map((answer, index) => {
+                            const question = questions.find(q => q.id === answer.questionId);
+                            if (!question || index !== answersPointer) return null;
+
+                            return (
+                                <SurveyQuestion key={question.id} question={question} />
+                            );
+                        })
+                    }
+                </div>)}
+
+                { !isLoading && (
                     <Step.Footer>
                         <SurveyNavigation />
                     </Step.Footer>
-                </Step>
+                )}
 
-            </> }
+                
+            </Step>
         </>
     )
 };
