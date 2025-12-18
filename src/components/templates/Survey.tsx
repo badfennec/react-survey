@@ -22,7 +22,7 @@ export default function Survey(){
                 <Step>
 
                     <Step.Title>
-                        <span className={'text-purple-500'}>{ user.name }</span>, let's begin the survey!
+                        Hello <span className={'text-purple-500'}>{ user.name }</span>!
                     </Step.Title>
 
                     <div>

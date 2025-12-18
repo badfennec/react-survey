@@ -11,8 +11,9 @@ interface SurveyUser {
     email: string;
 }
 
-interface SurveyAnswer {
+export interface SurveyAnswer {
     questionId: string;
+    question: Question;
     answer: null |string | number | Array<string | number>;
     prev_questionId?: string | boolean;
     next_questionId?: string | boolean;
@@ -56,6 +57,7 @@ export const surveySlice = createSlice({
 
             state.answers = action.payload.map((question, index) => ({
                 questionId: question.id,
+                question: question,
                 answer: null,
                 prev_questionId: index === 0 ? false : action.payload[index - 1].id,
                 next_questionId: false
@@ -128,6 +130,7 @@ export const surveySlice = createSlice({
                 if( questionToPush ){
                     state.answers.push({
                         questionId: nextAnswerToPushId,
+                        question: questionToPush,
                         answer: null,
                         prev_questionId: currentAnswer.questionId,
                         next_questionId: false
@@ -139,11 +142,8 @@ export const surveySlice = createSlice({
 
             if( action.payload === false ){
                 //this can beh the end of the survey
+                return;
             }
-
-            state.answers.map( ( answer, index ) => {
-                console.log( index, answer.questionId );
-            } );
 
             const nextAnswer = state.answers.findIndex( answer => answer.questionId === action.payload );
 
