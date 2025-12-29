@@ -48,20 +48,26 @@ const initialState: SurveyState = {
     stepOrder: ['INTRO', 'USERDATA', 'SURVEY', 'FINISH']
 }
 
-export const surveySlice = createSlice({
+const surveySlice = createSlice({
     name: 'survey',
     initialState,
     reducers: {
         initQuestions: (state: SurveyState, action: PayloadAction<Array<Question>>) : void => {
             state.questions = [...action.payload];
+            state.answers = [];
 
-            state.answers = action.payload.map((question, index) => ({
-                questionId: question.id,
-                question: question,
-                answer: null,
-                prev_questionId: index === 0 ? false : action.payload[index - 1].id,
-                next_questionId: false
-            }));
+            if( action.payload.length > 0 ){
+
+                const question = action.payload[0];
+
+                state.answers.push({
+                    questionId: question.id,
+                    question: question,
+                    answer: null,
+                    prev_questionId: false,
+                    next_questionId: false
+                });
+            }
         },
         goToNextStep: (state: SurveyState) : void => {
             const currentStepIndex = state.stepOrder.indexOf(state.step);
